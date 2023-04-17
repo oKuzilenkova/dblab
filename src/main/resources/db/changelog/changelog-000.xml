@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+<preConditions>
+    <runningAs  username="admin"/>
+</preConditions>
+
+    <changeSet author="admin" id="1">
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS lab_lb;
+        </sql>
+    </changeSet>
+
+<changeSet  id="1"  author="okuzilenkova">
+    <createTable remarks="Курс валюты" tableName="exchange_rates" schemaName="lab_lb">
+        <column  remarks="Идентификатор" name="id"  type="bigint"  autoIncrement="true">
+            <constraints  primaryKey="true"  nullable="false"/>
+        </column>
+        <column  remarks="Код валюты" name="currency_code"  type="varchar"/>
+        <column  remarks="Наименование валюты" name="currency_name"  type="varchar"/>
+        <column  remarks="Номинал" name="nominal"  type="bigint"/>
+        <column  remarks="Стоимость" name="cost"  type="decimal"/>
+    </createTable>
+</changeSet>
+
+</databaseChangeLog>
