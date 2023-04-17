@@ -16,6 +16,7 @@
     <version>1.0-SNAPSHOT</version>
     <properties>
         <java.version>17</java.version>
+        <spring.version>6.0.7</spring.version>
     </properties>
 
     <build>
@@ -26,35 +27,24 @@
             </plugin>
         </plugins>
     </build>
-    <!-- <build>
-         <plugins>
-             <plugin>
-                 <groupId>org.apache.maven.plugins</groupId>
-                 <artifactId>maven-compiler-plugin</artifactId>
-                 <configuration>
-                     <source>17</source>
-                     <target>17</target>
-                 </configuration>
-             </plugin>
-         </plugins>
-     </build>-->
-
-    <!--    <properties>
-            <spring.version>6.0.7</spring.version>
-            <spring.boot.version>3.0.5</spring.boot.version>
-        </properties>-->
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!--        JDBC Driver-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.5.0</version>
+            <version>42.5.1</version>
         </dependency>
 
         <dependency>
@@ -63,12 +53,6 @@
             <version>1.18.20</version>
             <scope>provided</scope>
         </dependency>
-
-        <!-- <dependency>
-             <groupId>org.slf4j</groupId>
-             <artifactId>slf4j-simple</artifactId>
-             <version>1.7.25</version>
-         </dependency>-->
 
         <dependency>
             <groupId>jakarta.persistence</groupId>
@@ -82,7 +66,6 @@
             <version>2.2</version>
         </dependency>-->
 
-
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -92,13 +75,13 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>6.0.7</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>6.0.7</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <dependency>
@@ -120,97 +103,12 @@
             </exclusions>
         </dependency>
 
-       <!-- <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>4.9.1</version>
-        </dependency>
--->
-    </dependencies>
-
-    <!-- <dependencies>
-
-         &lt;!&ndash;  Spring JDBC &ndash;&gt;
-         <dependency>
-             <groupId>org.springframework</groupId>
-             <artifactId>spring-jdbc</artifactId>
-             <version>${spring.version}</version>
-         </dependency>
-
-         <dependency>
-             <groupId>org.springframework</groupId>
-             <artifactId>spring-beans</artifactId>
-             <version>${spring.version}</version>
-         </dependency>
-
-         <dependency>
-             <groupId>org.springframework</groupId>
-             <artifactId>spring-context</artifactId>
-             <version>${spring.version}</version>
-         </dependency>
-
-         <dependency>
-             <groupId>org.springframework.boot</groupId>
-             <artifactId>spring-boot-starter</artifactId>
-             <version>${spring.boot.version}</version>
-             <exclusions>
-                 <exclusion>
-                     <groupId>ch.qos.logback</groupId>
-                     <artifactId>logback-classic</artifactId>
-                 </exclusion>
-             </exclusions>
-         </dependency>
-
-         &lt;!&ndash;  Liquibase&ndash;&gt;
-         <dependency>
+        <!-- <dependency>
              <groupId>org.liquibase</groupId>
              <artifactId>liquibase-core</artifactId>
              <version>4.9.1</version>
          </dependency>
-
-         <dependency>
-             <groupId>javax.persistence</groupId>
-             <artifactId>javax.persistence-api</artifactId>
-             <version>2.2</version>
-         </dependency>
-
-         <dependency>
-             <groupId>org.springframework</groupId>
-             <artifactId>spring-orm</artifactId>
-             <version>${spring.version}</version>
-         </dependency>
-
-         <dependency>
-             <groupId>org.hibernate</groupId>
-             <artifactId>hibernate-core</artifactId>
-             <version>5.4.0.Final</version>
-         </dependency>
-
-         <dependency>
-             <groupId>org.slf4j</groupId>
-             <artifactId>slf4j-simple</artifactId>
-             <version>1.7.25</version>
-         </dependency>
-
-         <dependency>
-             <groupId>org.springframework.data</groupId>
-             <artifactId>spring-data-jpa</artifactId>
-             <version>1.11.22.RELEASE</version>
-             <exclusions>
-                 <exclusion>
-                     <groupId>org.springframework</groupId>
-                     <artifactId>spring-core</artifactId>
-                 </exclusion>
-                 <exclusion>
-                     <groupId>org.springframework</groupId>
-                     <artifactId>spring-aop</artifactId>
-                 </exclusion>
-                 <exclusion>
-                     <groupId>org.springframework</groupId>
-                     <artifactId>spring-beans</artifactId>
-                 </exclusion>
-             </exclusions>
-         </dependency>
-     </dependencies>
  -->
+    </dependencies>
+
 </project>
