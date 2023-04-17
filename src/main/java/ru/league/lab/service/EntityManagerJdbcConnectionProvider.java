@@ -1,20 +1,21 @@
-package ru.league.lab;
+package ru.league.lab.service;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import org.springframework.stereotype.Component;
 
 import ru.league.lab.dao.entity.Exchange;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+
+@Component
 public class EntityManagerJdbcConnectionProvider {
 
     @PersistenceContext
     EntityManager em;
 
-    @PostConstruct
     public void printData() {
         //String sql = "select e from Exchange e where e.country.name like ?1 and e.code = :code";
 

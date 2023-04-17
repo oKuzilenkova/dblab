@@ -1,4 +1,4 @@
-package ru.league.lab;
+package ru.league.lab.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,8 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import ru.league.lab.dao.Exchange;
 
+@Component
 public class NativeJdbcConnectionProvider {
 
     private static Connection getDbConnection() throws SQLException {
@@ -18,7 +21,7 @@ public class NativeJdbcConnectionProvider {
         return conn;
     }
 
-    public static void printData(){
+    public void printData(){
         List<Exchange> resList = new ArrayList<>();
         String sql ="select * from lab.exchange_rates where currency_code like 'U%'";
 
@@ -35,6 +38,7 @@ public class NativeJdbcConnectionProvider {
         } catch (SQLException e) {
             System.out.println("Error: " + e);
         }
+        System.out.println("NativeJdbcConnectionProvider run");
         System.out.println(resList);
     }
 }

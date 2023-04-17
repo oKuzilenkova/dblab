@@ -2,10 +2,7 @@ package ru.league.lab.config;
 
 import java.util.Properties;
 
-import javax.persistence.EntityManagerFactory;
-
 import org.hibernate.jpa.HibernatePersistenceProvider;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -15,11 +12,13 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import ru.league.lab.service.SpringJpaConnectionProvider;
+import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "ru.league.lab.dao.repository")
+@EnableTransactionManagement
 public class AppConfig {
 
     @Bean
@@ -37,25 +36,15 @@ public class AppConfig {
         return ds;
     }
 
-   /* @Bean
-    SpringJdbcConnectionProvider springJdbcConnectionProvider(){
-        return new SpringJdbcConnectionProvider();
-    }*/
-
-  /*  @Bean
-    public SpringLiquibase springLiquibase(){
+ /*   @Bean
+    public SpringLiquibase springLiquibase() {
         SpringLiquibase liquibase = new SpringLiquibase();
         liquibase.setDataSource(dataSource());
         liquibase.setChangeLog("classpath:/db/changelog-master.yaml");
         return liquibase;
-    }*/
-
-    /*@Bean
-    EntityManagerJdbcConnectionProvider entityManagerJdbcConnectionProvider() {
-        return new EntityManagerJdbcConnectionProvider();
-    }*/
-
-/*    @Bean
+    }
+*/
+    @Bean
     public EntityManagerFactory entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
@@ -84,10 +73,4 @@ public class AppConfig {
         return txManager;
     }
 
-    @Bean
-    SpringJpaConnectionProvider springJpaConnectionProvider() {
-        return new SpringJpaConnectionProvider();
-    }
-
- */
 }
