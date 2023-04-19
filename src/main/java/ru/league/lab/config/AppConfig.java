@@ -15,6 +15,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import jakarta.persistence.EntityManagerFactory;
+import liquibase.integration.spring.SpringLiquibase;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "ru.league.lab.dao.repository")
@@ -36,14 +37,14 @@ public class AppConfig {
         return ds;
     }
 
- /*   @Bean
+    @Bean
     public SpringLiquibase springLiquibase() {
         SpringLiquibase liquibase = new SpringLiquibase();
         liquibase.setDataSource(dataSource());
         liquibase.setChangeLog("classpath:/db/changelog-master.yaml");
         return liquibase;
     }
-*/
+
     @Bean
     public EntityManagerFactory entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();

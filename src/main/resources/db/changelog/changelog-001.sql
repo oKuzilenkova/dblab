@@ -1,4 +1,3 @@
-
 --Создаем схему и назначаем владельца
 create schema lab authorization admin;
 
